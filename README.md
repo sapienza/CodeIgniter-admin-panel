@@ -13,8 +13,8 @@ I will be commiting functionalities like:
 Routes so far
 
 ```
-/news
 /products
+/products/id
 ```
 
 ------------------------------------------------------------------

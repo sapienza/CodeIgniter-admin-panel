@@ -1,0 +1,25 @@
+html, body {height: 100%; width: 100%;}
+.fright{float: right;}
+
+body{
+  display: table;
+  margin: 0;
+  background: $black;
+}
+
+    section.container-fluid{
+    	margin-top: 60px !important;
+    }
+	section.container{
+		display: table-cell; 
+		vertical-align: middle; 
+		position: relative; 
+		width: 100%;
+		padding-top: 40px;
+    }
+
+		  .login-box form{		  	
+			width: 500px;	
+			margin: auto;
+		  }
+		    .login-box form input{height: 30px}

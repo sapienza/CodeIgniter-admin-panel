@@ -45,5 +45,10 @@ $route['about'] = "about";
 $route['products'] = 'products';
 $route['products/(:any)'] = 'products/view/$1';
 
+
+/*admin*/
+$route['admin/products'] = 'admin_products/index';
+$route['admin/products/(:any)'] = 'admin_products/index/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

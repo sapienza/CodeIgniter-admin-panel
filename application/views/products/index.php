@@ -1,5 +1,5 @@
 <?php
-//echo $manufacture_selected;
+    //echo $manufacture_selected;
     //data use with code igniter library to build our form
     $attributes = array('class' => 'email', 'id' => 'myform');
     $hidden_data = array(

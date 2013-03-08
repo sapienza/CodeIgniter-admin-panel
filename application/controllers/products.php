@@ -32,8 +32,6 @@ class Products extends CI_Controller {
             show_404();
         }
 
-        //load code igniter helpers and libs for the view
-        $this->load->helper('form');    
         $this->load->view('products/index', $data);
     }
 

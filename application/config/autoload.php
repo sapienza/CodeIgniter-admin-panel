@@ -53,7 +53,8 @@ $autoload['packages'] = array();
 */
 
 //$autoload['libraries'] = array();
-$autoload['libraries'] = array('database', 'pagination', 'session');
+$autoload['libraries'] = array('database', 'pagination', 'session', 'user_agent', 'form_validation');
+
 
 /*
 | -------------------------------------------------------------------
@@ -65,7 +66,7 @@ $autoload['libraries'] = array('database', 'pagination', 'session');
 */
 
 //$autoload['helper'] = array();
-$autoload['helper'] = array('url', 'form');
+$autoload['helper'] = array('url', 'form', 'cookie');
 
 /*
 | -------------------------------------------------------------------
@@ -81,7 +82,6 @@ $autoload['helper'] = array('url', 'form');
 */
 
 $autoload['config'] = array();
-
 
 /*
 | -------------------------------------------------------------------

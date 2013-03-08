@@ -2,7 +2,10 @@
 
       <ul class="breadcrumb">
         <li>
-          <a href=""><?php echo ucfirst($this->uri->segment(1));?></a> <span class="divider">/</span>
+          <a href="<?php echo site_url("admin"); ?>">
+            <?php echo ucfirst($this->uri->segment(1));?>
+          </a> 
+          <span class="divider">/</span>
         </li>
         <li class="active">
           <?php echo ucfirst($this->uri->segment(2));?>
@@ -11,7 +14,8 @@
 
       <div class="page-header users-header">
         <h2>
-          <?php echo ucfirst($this->uri->segment(2));?> <a  href="" class="btn btn-success">Add a new</a>
+          <?php echo ucfirst($this->uri->segment(2));?> 
+          <a  href="<?php echo site_url("admin").'/'.$this->uri->segment(2); ?>/add" class="btn btn-success">Add a new</a>
         </h2>
       </div>
       

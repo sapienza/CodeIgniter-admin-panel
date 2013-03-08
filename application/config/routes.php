@@ -47,8 +47,15 @@ $route['products/(:any)'] = 'products/view/$1';
 
 
 /*admin*/
+$route['admin'] = 'user/index';
+$route['admin/login'] = 'user/index';
+$route['admin/logout'] = 'user/logout';
+$route['admin/login/validate_credentials'] = 'user/validate_credentials';
+
 $route['admin/products'] = 'admin_products/index';
-$route['admin/products/(:any)'] = 'admin_products/index/$1';
+$route['admin/products/(:any)'] = 'admin_products/index/$1'; //$1 = page number
+$route['admin/products/add'] = 'admin_products/add';
+$route['admin/products/edit/(:any)'] = 'admin_products/edit/$1';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

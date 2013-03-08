@@ -1,11 +1,19 @@
 <?php
 class Products_model extends CI_Model {
  
+    /**
+    * Responsable for auto load the database
+    * @return void
+    */
     public function __construct()
     {
         $this->load->database();
     }
 
+    /**
+    * Fetch manufactures's data from the database
+    * @return array
+    */
     public function get_manufacturers()
     {
 		$this->db->select('id, name');
@@ -15,9 +23,16 @@ class Products_model extends CI_Model {
 		return $query->result_array(); 
     }
 
-    /*
-    products = main table
-    manufactures = category/join table
+    /**
+    * Fetch products data from the database
+    * possibility to mix search, filter and order
+    * @param int $manufacuture_id 
+    * @param string $search_string 
+    * @param strong $order
+    * @param string $order_type 
+    * @param int $limit_start
+    * @param int $limit_end
+    * @return array
     */
     public function get_products($manufacture_id=null, $search_string=null, $order=null, $order_type='Asc', $limit_start, $limit_end)
     {
@@ -59,7 +74,12 @@ class Products_model extends CI_Model {
 		return $query->result_array(); 	
     }
 
-    function count_products($manufacture_id=null, $search_string=null, $order=null){
+    /**
+    * Count the number of rows
+    * @return int
+    */
+    function count_products($manufacture_id=null, $search_string=null, $order=null)
+    {
 		$this->db->select('*');
 		$this->db->from('products');
 		if($manufacture_id != null && $manufacture_id != 0){
@@ -76,6 +96,17 @@ class Products_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->num_rows();        
     }
+
+    /**
+    * Store the new item into the database
+    * @return int
+    */
+    function store_product($data)
+    {
+		$insert = $this->db->insert('products', $data);
+	    return $insert;
+	}
+
  
 }
 ?>	

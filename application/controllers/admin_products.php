@@ -1,18 +1,29 @@
 <?php
 class Admin_products extends CI_Controller {
+
+    /**
+    * name of the folder responsible for the views 
+    * which are manipulated by this controller
+    * @constant string
+    */
+    const VIEW_FOLDER = 'admin/products';
  
+    /**
+    * Responsable for auto load the model
+    * @return void
+    */
     public function __construct()
     {
         parent::__construct();
         $this->load->model('products_model');
     }
  
+    /**
+    * Load the main view with all the current model model's data.
+    * @return void
+    */
     public function index()
     {
-        
-        //load libraries and helpers
-        $this->load->library('pagination');
-        $this->load->helper('form');
 
         //all the posts sent by the view
         $manufacture_id = $this->input->post('manufacture_id');        
@@ -32,17 +43,20 @@ class Admin_products extends CI_Controller {
         $config['cur_tag_open'] = '<li class="active"><a>';
         $config['cur_tag_close'] = '</a></li>';
 
-
+        //if order type was changed
         if($order_type){
             $filter_session_data['order_type'] = $order_type;
         }
         else{
+            //we have something stored in the session? 
             if($this->session->userdata('order_type')){
                 $order_type = $this->session->userdata('order_type');    
             }else{
+                //if we have nothing inside session, so it's the default "Asc"
                 $order_type = 'Asc';    
             }
         }
+        //make the data type var avaible to our view
         $data['order_type_selected'] = $order_type;        
 
 
@@ -53,10 +67,15 @@ class Admin_products extends CI_Controller {
 
         //filtered && || paginated
         if($manufacture_id !== false && $search_string !== false && $order !== false || $this->uri->segment(3) == true){ 
-            //order_type
-            //if post is not null, we store it in session data array
-            //if is null, we use the session data already stored
-            //we save order into the the var to load the view with the param already selected       
+           
+            /*
+            The comments here are the same for line 79 until 99
+
+            if post is not null, we store it in session data array
+            if is null, we use the session data already stored
+            we save order into the the var to load the view with the param already selected       
+            */
+
             if($manufacture_id !== 0){
                 $filter_session_data['manufacture_selected'] = $manufacture_id;
             }else{
@@ -128,18 +147,65 @@ class Admin_products extends CI_Controller {
         {
             show_404();
         }
+         
+        //initializate the panination helper 
+        $this->pagination->initialize($config);   
 
-        $this->pagination->initialize($config);        
-        $this->load->view('admin/list', $data);            
+        //load the view
+        $data['main_content'] = $this::VIEW_FOLDER.'/list';
+        $this->load->view('includes/template', $data);  
 
     }//index
 
- 
-
-    public function view($id)
+    public function add()
     {
-        $data['product_detail'] = 'Details from product: '.$id;
-        $this->load->view('products/view', $data);
-    }
+        //if save button was clicked, get the data sent via post
+        if ($this->input->server('REQUEST_METHOD') === 'POST')
+        {
 
+            //form validation
+            $this->form_validation->set_rules('description', 'description', 'required');
+            $this->form_validation->set_rules('stock', 'stock', 'required|numeric');
+            $this->form_validation->set_rules('cost_price', 'cost_price', 'required|numeric');
+            $this->form_validation->set_rules('sell_price', 'sell_price', 'required|numeric');
+            $this->form_validation->set_rules('manufacture_id', 'manufacture_id', 'required');
+            $this->form_validation->set_error_delimiters('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
+
+            //if the form has passed through the validation
+            if ($this->form_validation->run())
+            {
+                $data_to_store = array(
+                    'description' => $this->input->post('description'),
+                    'stock' => $this->input->post('cost_price'),
+                    'cost_price' => $this->input->post('cost_price'),
+                    'sell_price' => $this->input->post('sell_price'),          
+                    'manufacture_id' => $this->input->post('manufacture_id')
+                );
+                //if the insert has returned true then we show the flash message
+                if($this->products_model->store_product($data_to_store)){
+                    $data['flash_message'] = TRUE; 
+                }else{
+                    $data['flash_message'] = FALSE; 
+                }
+
+            }
+
+        }
+        //fetch manufactures data to populate the select field
+        $data['manufactures'] = $this->products_model->get_manufacturers();
+        //load the view
+        $data['main_content'] = $this::VIEW_FOLDER.'/add';
+        $this->load->view('includes/template', $data);  
+    }       
+
+
+/*
+    public function edit()
+    {
+        //$data['product_detail'] = 'Details from product: '.$id;
+        //$this->load->view('products/view', $data);
+        $data['main_content'] = 'admin/edit';
+        $this->load->view('includes/template', $data);  
+    }
+*/
 }

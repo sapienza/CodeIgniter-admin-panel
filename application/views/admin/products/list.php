@@ -88,8 +88,8 @@
                 echo '<td>'.$row['sell_price'].'</td>';
                 echo '<td>'.$row['manufacture_name'].'</td>';
                 echo '<td class="crud-actions">
-                  <a href="" class="btn btn-info">view & edit</a>  
-                  <a href="" class="btn btn-danger">delete</a>
+                  <a href="'.site_url("admin").'/products/update/'.$row['id'].'" class="btn btn-info">view & edit</a>  
+                  <a href="'.site_url("admin").'/products/delete/'.$row['id'].'" class="btn btn-danger">delete</a>
                 </td>';
                 echo '</tr>';
               }

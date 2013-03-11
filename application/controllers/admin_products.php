@@ -32,7 +32,7 @@ class Admin_products extends CI_Controller {
         $order_type = $this->input->post('order_type'); 
 
         //pagination settings
-        $config['per_page'] = 4;
+        $config['per_page'] = 5;
         $config['base_url'] = 'http://dev.cisample.com.br/admin/products';
         $config['use_page_numbers'] = TRUE;
         $config['num_links'] = 20;
@@ -42,6 +42,15 @@ class Admin_products extends CI_Controller {
         $config['num_tag_close'] = '</li>';
         $config['cur_tag_open'] = '<li class="active"><a>';
         $config['cur_tag_close'] = '</a></li>';
+
+        //limit end
+        $page = $this->uri->segment(3);
+
+        //math to get the initial record to be select in the database
+        $limit_end = ($page * $config['per_page']) - $config['per_page'];
+        if ($limit_end < 0){
+            $limit_end = 0;
+        } 
 
         //if order type was changed
         if($order_type){
@@ -109,15 +118,15 @@ class Admin_products extends CI_Controller {
             //fetch sql data into arrays
             if($search_string){
                 if($order){
-                    $data['products'] = $this->products_model->get_products($manufacture_id, $search_string, $order, $order_type, $config['per_page'],$this->uri->segment(3));        
+                    $data['products'] = $this->products_model->get_products($manufacture_id, $search_string, $order, $order_type, $config['per_page'],$limit_end);        
                 }else{
-                    $data['products'] = $this->products_model->get_products($manufacture_id, $search_string, '', $order_type, $config['per_page'],$this->uri->segment(3));           
+                    $data['products'] = $this->products_model->get_products($manufacture_id, $search_string, '', $order_type, $config['per_page'],$limit_end);           
                 }
             }else{
                 if($order){
-                    $data['products'] = $this->products_model->get_products($manufacture_id, '', $order, $order_type, $config['per_page'],$this->uri->segment(3));        
+                    $data['products'] = $this->products_model->get_products($manufacture_id, '', $order, $order_type, $config['per_page'],$limit_end);        
                 }else{
-                    $data['products'] = $this->products_model->get_products($manufacture_id, '', '', $order_type, $config['per_page'],$this->uri->segment(3) );        
+                    $data['products'] = $this->products_model->get_products($manufacture_id, '', '', $order_type, $config['per_page'],$limit_end);        
                 }
             }
 
@@ -138,7 +147,7 @@ class Admin_products extends CI_Controller {
             //fetch sql data into arrays
             $data['manufactures'] = $this->products_model->get_manufacturers();
             $data['count_products']= $this->products_model->count_products();
-            $data['products'] = $this->products_model->get_products('', '', '', $order_type, $config['per_page'],$this->uri->segment(3) );        
+            $data['products'] = $this->products_model->get_products('', '', '', $order_type, $config['per_page'],$limit_end);        
             $config['total_rows'] = $data['count_products'];
 
         }//!isset($manufacture_id) && !isset($search_string) && !isset($order)
@@ -176,7 +185,7 @@ class Admin_products extends CI_Controller {
             {
                 $data_to_store = array(
                     'description' => $this->input->post('description'),
-                    'stock' => $this->input->post('cost_price'),
+                    'stock' => $this->input->post('stock'),
                     'cost_price' => $this->input->post('cost_price'),
                     'sell_price' => $this->input->post('sell_price'),          
                     'manufacture_id' => $this->input->post('manufacture_id')
@@ -198,14 +207,71 @@ class Admin_products extends CI_Controller {
         $this->load->view('includes/template', $data);  
     }       
 
-
-/*
-    public function edit()
+    /**
+    * Update item by his id
+    * @return void
+    */
+    public function update()
     {
-        //$data['product_detail'] = 'Details from product: '.$id;
-        //$this->load->view('products/view', $data);
-        $data['main_content'] = 'admin/edit';
-        $this->load->view('includes/template', $data);  
-    }
-*/
+        //product id 
+        $id = $this->uri->segment(4);
+  
+        //if save button was clicked, get the data sent via post
+        if ($this->input->server('REQUEST_METHOD') === 'POST')
+        {
+            //form validation
+            $this->form_validation->set_rules('description', 'description', 'required');
+            $this->form_validation->set_rules('stock', 'stock', 'required|numeric');
+            $this->form_validation->set_rules('cost_price', 'cost_price', 'required|numeric');
+            $this->form_validation->set_rules('sell_price', 'sell_price', 'required|numeric');
+            $this->form_validation->set_rules('manufacture_id', 'manufacture_id', 'required');
+            $this->form_validation->set_error_delimiters('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
+            //if the form has passed through the validation
+            if ($this->form_validation->run())
+            {
+    
+                $data_to_store = array(
+                    'description' => $this->input->post('description'),
+                    'stock' => $this->input->post('stock'),
+                    'cost_price' => $this->input->post('cost_price'),
+                    'sell_price' => $this->input->post('sell_price'),          
+                    'manufacture_id' => $this->input->post('manufacture_id')
+                );
+                //if the insert has returned true then we show the flash message
+                if($this->products_model->update_product($id, $data_to_store) == TRUE){
+                    $this->session->set_flashdata('flash_message', 'updated');
+                }else{
+                    $this->session->set_flashdata('flash_message', 'not_updated');
+                }
+                redirect('admin/products/update/'.$id.'');
+
+            }//validation run
+
+        }
+
+        //if we are updating, and the data did not pass trough the validation
+        //the code below wel reload the current data
+
+        //product data 
+        $data['product'] = $this->products_model->get_product_by_id($id);
+        //fetch manufactures data to populate the select field
+        $data['manufactures'] = $this->products_model->get_manufacturers();
+        //load the view
+        $data['main_content'] = 'admin/products/edit';
+        $this->load->view('includes/template', $data);            
+
+    }//update
+
+    /**
+    * Delete product by his id
+    * @return void
+    */
+    public function delete()
+    {
+        //product id 
+        $id = $this->uri->segment(4);
+        $this->products_model->delete_product($id);
+        redirect('admin/products');
+    }//edit
+
 }

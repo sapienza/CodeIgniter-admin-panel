@@ -53,9 +53,18 @@ $route['admin/logout'] = 'user/logout';
 $route['admin/login/validate_credentials'] = 'user/validate_credentials';
 
 $route['admin/products'] = 'admin_products/index';
-$route['admin/products/(:any)'] = 'admin_products/index/$1'; //$1 = page number
+
 $route['admin/products/add'] = 'admin_products/add';
-$route['admin/products/edit/(:any)'] = 'admin_products/edit/$1';
+
+$route['admin/products/update'] = 'admin_products/update';
+$route['admin/products/update/(:any)'] = 'admin_products/update/$1';
+
+$route['admin/products/delete/(:any)'] = 'admin_products/delete/$1';
+
+$route['admin/products/(:any)'] = 'admin_products/index/$1'; //$1 = page number
+
+
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

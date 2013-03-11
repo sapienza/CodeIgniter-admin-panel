@@ -1,178 +1,109 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <div class="container">
-      <a href="dashboard.html" class="brand">Project Name</a>
-      <ul class="nav">
+    <div class="container top">
+      
+      <ul class="breadcrumb">
         <li>
-          <a href="dashboard.html">Dashboard</a>
+          <a href="<?php echo site_url("admin"); ?>">
+            <?php echo ucfirst($this->uri->segment(1));?>
+          </a> 
+          <span class="divider">/</span>
+        </li>
+        <li>
+          <a href="<?php echo site_url("admin").'/'.$this->uri->segment(2); ?>">
+            <?php echo ucfirst($this->uri->segment(2));?>
+          </a> 
+          <span class="divider">/</span>
         </li>
         <li class="active">
-          <a href="list.html">Users</a>
-        </li>
-        <li>
-          <a href="#">Content</a>
-        </li>
-        <li>
-          <a href="#">Media</a>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#">Secondary link</a>
-            </li>
-            <li>
-              <a href="#">Something else here</a>
-            </li>
-            <li>
-              <a href="#">Another link</a>
-            </li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">System <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="help.html">Help</a>
-            </li>
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="index.html">Logout</a>
-            </li>
-          </ul>
+          <a href="#">Update</a>
         </li>
       </ul>
-      <form action="" class="navbar-search pull-left">
-        <input type="text" placeholder="Search" class="search-query span2">
-      </form>
-    </div>
-  </div>
-</div>
-<div class="container top">
-  
-  <ul class="breadcrumb">
-    <li>
-      <a href="dashboard.html">Home</a> <span class="divider">/</span>
-    </li>
-    <li>
-      <a href="list.html">Users</a> <span class="divider">/</span>
-    </li>
-    <li class="active">
-      <a href="#">New user</a>
-    </li>
-  </ul>
-  
+      
+      <div class="page-header">
+        <h2>
+          Updating <?php echo ucfirst($this->uri->segment(2));?>
+        </h2>
+      </div>
 
-  
-  <div class="page-header">
-    <h2>
-      New user
-    </h2>
-  </div>
-
-
-
-    
-    <div class="alert alert-error">
-            <a class="close" data-dismiss="alert">×</a>
-            <strong>Oh snap!</strong> Change a few things up and try submitting again.
-          </div>
-          
-          <div class="alert alert-success">
-                  <a class="close" data-dismiss="alert">×</a>
-                  <strong>Well done!</strong> You successfully read this important alert message.
-                </div>
-                
-                <div class="alert alert-info">
-                        <a class="close" data-dismiss="alert">×</a>
-                        <strong>Heads up!</strong> This alert needs your attention, but it's not super important.
-                      </div>
-    
-    <form class="form-horizontal">
-            <fieldset>
-              <div class="control-group">
-                <label for="focusedInput" class="control-label">Focused input</label>
-                <div class="controls">
-                  <input type="text" value="This is focused…" id="focusedInput" class="input-xlarge focused">
-                </div>
-              </div>
-              
-              <div class="control-group">
-                <label for="fileInput" class="control-label">Focused input</label>
-                <div class="controls">
-                  <input type="file" id="fileInput" class="input-xlarge">
-                  
-                  <div class="progress progress-info progress-striped active progress-form-file">
-                      <div class="bar" style="width: 40%;"></div>
-                  </div>
-                  
-                </div>
-              </div>
-              
-              
-              <div class="control-group">
-                <label class="control-label">Uneditable input</label>
-                <div class="controls">
-                  <span class="input-xlarge uneditable-input">Some value here</span>
-                </div>
-              </div>
-              <div class="control-group">
-                <label for="disabledInput" class="control-label">Disabled input</label>
-                <div class="controls">
-                  <input type="text" disabled="" placeholder="Disabled input here…" id="disabledInput" class="input-xlarge disabled">
-                </div>
-              </div>
-              <div class="control-group">
-                <label for="optionsCheckbox2" class="control-label">Disabled checkbox</label>
-                <div class="controls">
-                  <label class="checkbox">
-                    <input type="checkbox" disabled="" value="option1" id="optionsCheckbox2">
-                    This is a disabled checkbox
-                  </label>
-                </div>
-              </div>
-              <div class="control-group warning">
-                <label for="inputError" class="control-label">Input with warning</label>
-                <div class="controls">
-                  <input type="text" id="inputError">
-                  <span class="help-inline">Something may have gone wrong</span>
-                </div>
-              </div>
-              <div class="control-group error">
-                <label for="inputError" class="control-label">Input with error</label>
-                <div class="controls">
-                  <input type="text" id="inputError">
-                  <span class="help-inline">Please correct the error</span>
-                </div>
-              </div>
-              <div class="control-group success">
-                <label for="inputError" class="control-label">Input with success</label>
-                <div class="controls">
-                  <input type="text" id="inputError">
-                  <span class="help-inline">Woohoo!</span>
-                </div>
-              </div>
-              <div class="control-group success">
-                <label for="selectError" class="control-label">Select with success</label>
-                <div class="controls">
-                  <select id="selectError">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                  <span class="help-inline">Woohoo!</span>
-                </div>
-              </div>
-              <div class="form-actions">
-                <button class="btn btn-primary" type="submit">Save changes</button>
-                <button class="btn" type="reset">Cancel</button>
-              </div>
-            </fieldset>
-          </form>
-
-</div>
  
+      <?php
+      //flash messages
+      if($this->session->flashdata('flash_message')){
+        if($this->session->flashdata('flash_message') == 'updated')
+        {
+          echo '<div class="alert alert-success">';
+            echo '<a class="close" data-dismiss="alert">×</a>';
+            echo '<strong>Well done!</strong> You successfully read this important alert message.';
+          echo '</div>';       
+        }else{
+          echo '<div class="alert alert-error">';
+            echo '<a class="close" data-dismiss="alert">×</a>';
+            echo '<strong>Oh snap!</strong> Change a few things up and try submitting again.';
+          echo '</div>';          
+        }
+      }
+      ?>
+      
+      <?php
+      //form data
+      $attributes = array('class' => 'form-horizontal', 'id' => '');
+      $options_manufacture = array('' => "Select");
+      foreach ($manufactures as $row)
+      {
+        $options_manufacture[$row['id']] = $row['name'];
+      }
+
+      //form validation
+      echo validation_errors();
+
+      echo form_open('admin/products/update/'.$this->uri->segment(4).'', $attributes);
+      ?>
+        <fieldset>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Description</label>
+            <div class="controls">
+              <input type="text" id="" name="description" value="<?php echo $product[0]['description']; ?>" >
+              <!--<span class="help-inline">Woohoo!</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Stock</label>
+            <div class="controls">
+              <input type="text" id="" name="stock" value="<?php echo $product[0]['stock']; ?>">
+              <!--<span class="help-inline">Cost Price</span>-->
+            </div>
+          </div>          
+          <div class="control-group">
+            <label for="inputError" class="control-label">Cost Price</label>
+            <div class="controls">
+              <input type="text" id="" name="cost_price" value="<?php echo $product[0]['cost_price'];?>">
+              <!--<span class="help-inline">Cost Price</span>-->
+            </div>
+          </div>
+          <div class="control-group">
+            <label for="inputError" class="control-label">Sell Price</label>
+            <div class="controls">
+              <input type="text" name="sell_price" value="<?php echo $product[0]['sell_price']; ?>">
+              <!--<span class="help-inline">OOps</span>-->
+            </div>
+          </div>
+          <?php
+          echo '<div class="control-group">';
+            echo '<label for="manufacture_id" class="control-label">Manufacture</label>';
+            echo '<div class="controls">';
+              //echo form_dropdown('manufacture_id', $options_manufacture, '', 'class="span2"');
+              
+              echo form_dropdown('manufacture_id', $options_manufacture, $product[0]['manufacture_id'], 'class="span2"');
+
+            echo '</div>';
+          echo '</div">';
+          ?>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Save changes</button>
+            <button class="btn" type="reset">Cancel</button>
+          </div>
+        </fieldset>
+
+      <?php echo form_close(); ?>
+
+    </div>
+     

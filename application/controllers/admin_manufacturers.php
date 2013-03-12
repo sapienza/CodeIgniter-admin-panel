@@ -239,8 +239,8 @@ class Admin_manufacturers extends CI_Controller {
     {
         //product id 
         $id = $this->uri->segment(4);
-        $this->manufacturers_model->delete_product($id);
-        redirect('admin/products');
+        $this->manufacturers_model->delete_manufacture($id);
+        redirect('admin/manufacturers');
     }//edit
 
 }

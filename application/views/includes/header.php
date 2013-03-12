@@ -9,24 +9,17 @@
 	<div class="navbar navbar-fixed-top">
 	  <div class="navbar-inner">
 	    <div class="container">
-	      <a href="dashboard.html" class="brand">Project Name</a>
+	      <a class="brand">Project Name</a>
 	      <ul class="nav">
-	        <li>
-	          <a href="dashboard.html">Dashboard</a>
+	        <li <?php if($this->uri->segment(2) == 'products'){echo 'class="active"';}?>>
+	          <a href="<?php echo base_url(); ?>admin/products">Products</a>
 	        </li>
-	        <li class="active">
-	          <a href="list.html">Products</a>
+	        <li <?php if($this->uri->segment(2) == 'manufacturers'){echo 'class="active"';}?>>
+	          <a href="<?php echo base_url(); ?>admin/manufacturers">Manufacturers</a>
 	        </li>
-	      
 	        <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">System <b class="caret"></b></a>
 	          <ul class="dropdown-menu">
-	            <li>
-	              <a href="#">Change e-mail</a>
-	            </li>
-	            <li>
-	              <a href="#">Change password</a>
-	            </li>
 	            <li>
 	              <a href="<?php echo base_url(); ?>admin/logout">Logout</a>
 	            </li>

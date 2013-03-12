@@ -1,5 +1,5 @@
 <?php
-class Products_model extends CI_Model {
+class Manufacturers_model extends CI_Model {
  
     /**
     * Responsable for auto load the database
@@ -15,19 +15,18 @@ class Products_model extends CI_Model {
     * @param int $product_id 
     * @return array
     */
-    public function get_product_by_id($id)
+    public function get_manufacture_by_id($id)
     {
 		$this->db->select('*');
-		$this->db->from('products');
+		$this->db->from('manufacturers');
 		$this->db->where('id', $id);
 		$query = $this->db->get();
 		return $query->result_array(); 
-    }
+    }    
 
     /**
-    * Fetch products data from the database
+    * Fetch manufacturers data from the database
     * possibility to mix search, filter and order
-    * @param int $manufacuture_id 
     * @param string $search_string 
     * @param strong $order
     * @param string $order_type 
@@ -35,27 +34,16 @@ class Products_model extends CI_Model {
     * @param int $limit_end
     * @return array
     */
-    public function get_products($manufacture_id=null, $search_string=null, $order=null, $order_type='Asc', $limit_start, $limit_end)
+    public function get_manufacturers($search_string=null, $order=null, $order_type='Asc', $limit_start=null, $limit_end=null)
     {
 	    
-		$this->db->select('products.id');
-		$this->db->select('products.description');
-		$this->db->select('products.stock');
-		$this->db->select('products.cost_price');
-		$this->db->select('products.sell_price');
-		$this->db->select('products.manufacture_id');
-		$this->db->select('manufacturers.name as manufacture_name');
-		$this->db->from('products');
-		if($manufacture_id != null && $manufacture_id != 0){
-			$this->db->where('manufacture_id', $manufacture_id);
-		}
+		$this->db->select('*');
+		$this->db->from('manufacturers');
+
 		if($search_string){
-			$this->db->like('description', $search_string);
+			$this->db->like('name', $search_string);
 		}
-
-		$this->db->join('manufacturers', 'products.manufacture_id = manufacturers.id', 'left');
-
-		$this->db->group_by('products.id');
+		$this->db->group_by('id');
 
 		if($order){
 			$this->db->order_by($order, $order_type);
@@ -63,32 +51,28 @@ class Products_model extends CI_Model {
 		    $this->db->order_by('id', $order_type);
 		}
 
-
-		$this->db->limit($limit_start, $limit_end);
-		//$this->db->limit('4', '4');
-
-
+        if($limit_start && $limit_end){
+          $this->db->limit($limit_start, $limit_end);	
+        }
+		
 		$query = $this->db->get();
 		
 		return $query->result_array(); 	
     }
 
+
     /**
     * Count the number of rows
-    * @param int $manufacture_id
     * @param int $search_string
     * @param int $order
     * @return int
     */
-    function count_products($manufacture_id=null, $search_string=null, $order=null)
+    function count_manufacturers($search_string=null, $order=null)
     {
 		$this->db->select('*');
-		$this->db->from('products');
-		if($manufacture_id != null && $manufacture_id != 0){
-			$this->db->where('manufacture_id', $manufacture_id);
-		}
+		$this->db->from('manufacturers');
 		if($search_string){
-			$this->db->like('description', $search_string);
+			$this->db->like('name', $search_string);
 		}
 		if($order){
 			$this->db->order_by($order, 'Asc');
@@ -104,21 +88,21 @@ class Products_model extends CI_Model {
     * @param array $data - associative array with data to store
     * @return boolean 
     */
-    function store_product($data)
+    function store_manufacture($data)
     {
-		$insert = $this->db->insert('products', $data);
+		$insert = $this->db->insert('manufacturers', $data);
 	    return $insert;
 	}
 
     /**
-    * Update product
+    * Update manufacture
     * @param array $data - associative array with data to store
     * @return boolean
     */
-    function update_product($id, $data)
+    function update_manufacture($id, $data)
     {
 		$this->db->where('id', $id);
-		$this->db->update('products', $data);
+		$this->db->update('manufacturers', $data);
 		$report = array();
 		$report['error'] = $this->db->_error_number();
 		$report['message'] = $this->db->_error_message();
@@ -130,13 +114,13 @@ class Products_model extends CI_Model {
 	}
 
     /**
-    * Delete product
-    * @param int $id - product id
+    * Delete manufacturer
+    * @param int $id - manufacture id
     * @return boolean
     */
-	function delete_product($id){
+	function delete_manufacture($id){
 		$this->db->where('id', $id);
-		$this->db->delete('products'); 
+		$this->db->delete('manufacturers'); 
 	}
  
 }

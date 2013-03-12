@@ -53,16 +53,18 @@ $route['admin/logout'] = 'user/logout';
 $route['admin/login/validate_credentials'] = 'user/validate_credentials';
 
 $route['admin/products'] = 'admin_products/index';
-
 $route['admin/products/add'] = 'admin_products/add';
-
 $route['admin/products/update'] = 'admin_products/update';
 $route['admin/products/update/(:any)'] = 'admin_products/update/$1';
-
 $route['admin/products/delete/(:any)'] = 'admin_products/delete/$1';
-
 $route['admin/products/(:any)'] = 'admin_products/index/$1'; //$1 = page number
 
+$route['admin/manufacturers'] = 'admin_manufacturers/index';
+$route['admin/manufacturers/add'] = 'admin_manufacturers/add';
+$route['admin/manufacturers/update'] = 'admin_manufacturers/update';
+$route['admin/manufacturers/update/(:any)'] = 'admin_manufacturers/update/$1';
+$route['admin/manufacturers/delete/(:any)'] = 'admin_manufacturers/delete/$1';
+$route['admin/manufacturers/(:any)'] = 'admin_manufacturers/index/$1'; //$1 = page number
 
 
 

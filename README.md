@@ -23,7 +23,7 @@ Sample administrator panel using CodeIgniter with Mysql and Twiter Boostrap.
   <li>Delete data</li>
 </ul>
 ------------------------------------------------------------------
-Livre preview in<br />
+<h2>Live preview in</h2>
 <a href="http://cisample.brunosapienza.com" target="blank">cisample.brunosapienza.com</a>
 
 login = admin <br />
@@ -31,7 +31,7 @@ password =  admin
 
 ------------------------------------------------------------------
 
-Routes 
+<h2>Routes </h2>
 
 ```
 /products
@@ -42,7 +42,7 @@ Routes
 
 ------------------------------------------------------------------
 
-Screenshots
+<h2>Screenshots</h2>
 
 <img src="http://cl.ly/image/040F053a0v07/Screen%20Shot%202013-03-19%20at%203.35.55%20PM.png"/>
 

@@ -1,13 +1,20 @@
 CodeIgniter-Sample-Project
 ==========================
 
-The ideia is a sample project using CodeIgniter with Mysql. 
-I will be commiting functionalities like: 
-  news page list with a page for each new,option to filter the data, and pagination; 
-  mail page;
-  statics pages;
-  and a admin control panel.
+Sample administrator panel using CodeIgniter with Mysql.
+Functionalities listed below.
 
+Login/Logout
+List data content with pagination, search, and filters.
+Edit data.
+Delete data.
+
+
+------------------------------------------------------------------
+Livre preview in cisample.brunosapienza.com
+
+login: admin
+password: admin
 ------------------------------------------------------------------
 
 Routes 

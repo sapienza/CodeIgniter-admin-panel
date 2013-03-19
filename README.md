@@ -52,6 +52,12 @@ admin/manufacturers/update/id
 
 <img src="http://cl.ly/image/3o1I3i3z0C0F/Screen%20Shot%202013-03-19%20at%203.40.43%20PM.png"/>
 
+<img src="http://cl.ly/image/3e0N0k1V0N3T/Screen%20Shot%202013-03-19%20at%204.10.06%20PM.png"/>
+
+
+
+
+
 ------------------------------------------------------------------
 
 <h2>Mysql Dump</h2>

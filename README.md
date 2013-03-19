@@ -31,15 +31,19 @@ password =  admin
 
 ------------------------------------------------------------------
 
-<h2>Routes </h2>
+<h2>Main routes </h2>
 
 ```
-/products
-/products/id
-/manufacturers
-/manufacturers/id
-```
+admim/products
+admin/products/id
+admin/products/add
+admin/products/update/id
 
+admim/manufacturers
+admin/manufacturers/id
+admin/manufacturers/add
+admin/manufacturers/update/id
+```
 ------------------------------------------------------------------
 
 <h2>Screenshots</h2>

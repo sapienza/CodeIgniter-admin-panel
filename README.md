@@ -3,7 +3,7 @@ CodeIgniter-Sample-Project
 
 Sample administrator panel using CodeIgniter with Mysql and Twiter Boostrap.
 
-<h1>Requirements</h1>
+<h2>Requirements</h2>
 <ul>
 <li>
 <a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a> 2.0.4+</li>
@@ -12,15 +12,16 @@ Sample administrator panel using CodeIgniter with Mysql and Twiter Boostrap.
 </ul>
 
 
-Functionalities listed below.<br />
+<h2>Functionalities:</h2>
 
-Login/Logout<br />
-List data content with pagination, search, and filters.<br />
-all forms with back end validation.<br />
-Insert new data.<br />
-Edit data.<br />
-Delete data.
-
+<ul>
+  <li>Login/Logout</li>
+  <li>List data content with pagination, search, and filters</li>
+  <li>All forms with back end validation</li>
+  <li>Insert new data</li>
+  <li>Edit data</li>
+  <li>Delete data</li>
+</ul>
 ------------------------------------------------------------------
 Livre preview in<br />
 <a href="http://cisample.brunosapienza.com" target="blank">cisample.brunosapienza.com</a>
@@ -47,7 +48,9 @@ Screenshots
 
 <img src="http://cl.ly/image/3o1I3i3z0C0F/Screen%20Shot%202013-03-19%20at%203.40.43%20PM.png"/>
 
+------------------------------------------------------------------
 
+<h2>Mysql Dump</h2>
 
 ```
 CREATE TABLE `ci_cookies` (

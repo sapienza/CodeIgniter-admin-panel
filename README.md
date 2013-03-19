@@ -2,17 +2,18 @@ CodeIgniter-Sample-Project
 ==========================
 
 Sample administrator panel using CodeIgniter with Mysql.
-Functionalities listed below.
+Functionalities listed below.<br />
 
-Login/Logout
-List data content with pagination, search, and filters.
-all forms with back end validation.
-Insert new data.
-Edit data.
+Login/Logout<br />
+List data content with pagination, search, and filters.<br />
+all forms with back end validation.<br />
+Insert new data.<br />
+Edit data.<br />
 Delete data.
 
 ------------------------------------------------------------------
-Livre preview in cisample.brunosapienza.com
+Livre preview in<br />
+<a href="http://cisample.brunosapienza.com" target="blank">cisample.brunosapienza.com</a>
 
 login: admin
 password: admin

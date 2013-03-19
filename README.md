@@ -15,7 +15,9 @@ Delete data.
 Livre preview in<br />
 <a href="http://cisample.brunosapienza.com" target="blank">cisample.brunosapienza.com</a>
 
-login: admin / pass:  admin
+login = admin <br />
+password =  admin
+
 ------------------------------------------------------------------
 
 Routes 

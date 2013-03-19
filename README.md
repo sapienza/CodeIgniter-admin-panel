@@ -1,7 +1,17 @@
 CodeIgniter-Sample-Project
 ==========================
 
-Sample administrator panel using CodeIgniter with Mysql.
+Sample administrator panel using CodeIgniter with Mysql and Twiter Boostrap.
+
+<h1>Requirements</h1>
+<ul>
+<li>
+<a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a> 2.0.4+</li>
+<li>
+<a href="http://jquery.com/" target="_blank">jQuery</a> 1.7.1+</li>
+</ul>
+
+
 Functionalities listed below.<br />
 
 Login/Logout<br />
@@ -30,6 +40,14 @@ Routes
 ```
 
 ------------------------------------------------------------------
+
+Screenshots
+
+<img src="http://cl.ly/image/040F053a0v07/Screen%20Shot%202013-03-19%20at%203.35.55%20PM.png"/>
+
+<img src="http://cl.ly/image/3o1I3i3z0C0F/Screen%20Shot%202013-03-19%20at%203.40.43%20PM.png"/>
+
+
 
 ```
 CREATE TABLE `ci_cookies` (

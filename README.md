@@ -6,9 +6,10 @@ Functionalities listed below.
 
 Login/Logout
 List data content with pagination, search, and filters.
+all forms with back end validation.
+Insert new data.
 Edit data.
 Delete data.
-
 
 ------------------------------------------------------------------
 Livre preview in cisample.brunosapienza.com

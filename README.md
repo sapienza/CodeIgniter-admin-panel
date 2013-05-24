@@ -31,21 +31,6 @@ password =  admin
 
 ------------------------------------------------------------------
 
-<h2>Main routes </h2>
-
-```
-admim/products
-admin/products/id
-admin/products/add
-admin/products/update/id
-
-admim/manufacturers
-admin/manufacturers/id
-admin/manufacturers/add
-admin/manufacturers/update/id
-```
-------------------------------------------------------------------
-
 <h2>Screenshots</h2>
 
 <img src="http://cl.ly/image/040F053a0v07/Screen%20Shot%202013-03-19%20at%203.35.55%20PM.png"/>
@@ -54,8 +39,22 @@ admin/manufacturers/update/id
 
 <img src="http://cl.ly/image/3e0N0k1V0N3T/Screen%20Shot%202013-03-19%20at%204.10.06%20PM.png"/>
 
+------------------------------------------------------------------
 
+<h2>Instructions</h2>
 
+<ul>
+  <li>Setup your database in application/config/database.php</li>
+  <li>Dump the mysql at the bottom of this readme</li>
+  <li>Change $config['base_url'] in the files:</li>
+  <ul>
+    <li>application/config/config.php line 17</li>
+    <li>application/controllers/admin_manufacturers.php line 35</li>
+    <li>application/controllers/admin_products.php line 30</li>
+  </ul>
+  <li>Acces your project url</li>
+  <li>Both login and password are "admin"</li>
+</ul>
 
 
 ------------------------------------------------------------------

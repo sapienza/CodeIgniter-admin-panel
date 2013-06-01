@@ -54,12 +54,15 @@ class Manufacturers_model extends CI_Model {
         if($limit_start && $limit_end){
           $this->db->limit($limit_start, $limit_end);	
         }
-		
+
+        if($limit_start != null){
+          $this->db->limit($limit_start, $limit_end);    
+        }
+        
 		$query = $this->db->get();
 		
 		return $query->result_array(); 	
     }
-
 
     /**
     * Count the number of rows

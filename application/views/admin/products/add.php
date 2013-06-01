@@ -23,7 +23,6 @@
           Adding <?php echo ucfirst($this->uri->segment(2));?>
         </h2>
       </div>
-
  
       <?php
       //flash messages
@@ -32,12 +31,12 @@
         {
           echo '<div class="alert alert-success">';
             echo '<a class="close" data-dismiss="alert">×</a>';
-            echo '<strong>Well done!</strong> You successfully read this important alert message.';
+            echo '<strong>Well done!</strong> new product created with success.';
           echo '</div>';       
         }else{
           echo '<div class="alert alert-error">';
             echo '<a class="close" data-dismiss="alert">×</a>';
-            echo '<strong>Oh snap!</strong> Change a few things up and try submitting again.';
+            echo '<strong>Oh snap!</strong> change a few things up and try submitting again.';
           echo '</div>';          
         }
       }

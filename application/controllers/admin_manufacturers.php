@@ -32,7 +32,8 @@ class Admin_manufacturers extends CI_Controller {
 
         //pagination settings
         $config['per_page'] = 5;
-        $config['base_url'] = 'http://dev.cisample.com.br/admin/products';
+
+        $config['base_url'] = base_url().'admin/manufacturers';
         $config['use_page_numbers'] = TRUE;
         $config['num_links'] = 20;
         $config['full_tag_open'] = '<ul>';
@@ -139,17 +140,12 @@ class Admin_manufacturers extends CI_Controller {
             $config['total_rows'] = $data['count_products'];
 
         }//!isset($search_string) && !isset($order)
-
-        if (empty($data['manufacturers']))
-        {
-            show_404();
-        }
          
         //initializate the panination helper 
         $this->pagination->initialize($config);   
 
         //load the view
-        $data['main_content'] = $this::VIEW_FOLDER.'/list';
+        $data['main_content'] = 'admin/manufacturers/list';
         $this->load->view('includes/template', $data);  
 
     }//index
@@ -182,7 +178,7 @@ class Admin_manufacturers extends CI_Controller {
 
         }
         //load the view
-        $data['main_content'] = $this::VIEW_FOLDER.'/add';
+        $data['main_content'] = 'admin/manufacturers/add';
         $this->load->view('includes/template', $data);  
     }       
 

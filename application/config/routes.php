@@ -37,17 +37,13 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-$route['default_controller'] = 'products';
+$route['default_controller'] = 'user/index';
 $route['404_override'] = '';
-
-$route['about'] = "about";
-
-$route['products'] = 'products';
-$route['products/(:any)'] = 'products/view/$1';
-
 
 /*admin*/
 $route['admin'] = 'user/index';
+$route['admin/signup'] = 'user/signup';
+$route['admin/create_member'] = 'user/create_member';
 $route['admin/login'] = 'user/index';
 $route['admin/logout'] = 'user/logout';
 $route['admin/login/validate_credentials'] = 'user/validate_credentials';

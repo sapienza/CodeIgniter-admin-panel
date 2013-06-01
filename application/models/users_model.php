@@ -11,7 +11,6 @@ class Users_model extends CI_Model {
     */
 	function validate($user_name, $password)
 	{
-
 		$this->db->where('user_name', $user_name);
 		$this->db->where('pass_word', $password);
 		$query = $this->db->get('membership');
@@ -21,6 +20,7 @@ class Users_model extends CI_Model {
 			return true;
 		}
 		
+		return true;	
 	}
 
     /**
@@ -53,7 +53,9 @@ class Users_model extends CI_Model {
 		$query = $this->db->get('membership');
 
         if($query->num_rows > 0){
-			echo "nome de usuario ja existe";	
+        	echo '<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>';
+			  echo "Username already taken";	
+			echo '</strong></div>';
 		}else{
 
 			$new_member_insert_data = array(

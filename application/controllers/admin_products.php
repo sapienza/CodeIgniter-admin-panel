@@ -1,12 +1,5 @@
 <?php
 class Admin_products extends CI_Controller {
-
-    /**
-    * name of the folder responsible for the views 
-    * which are manipulated by this controller
-    * @constant string
-    */
-    const VIEW_FOLDER = 'admin/products';
  
     /**
     * Responsable for auto load the model
@@ -34,7 +27,7 @@ class Admin_products extends CI_Controller {
 
         //pagination settings
         $config['per_page'] = 5;
-        $config['base_url'] = 'http://dev.cisample.com.br/admin/products';
+        $config['base_url'] = base_url().'admin/products';
         $config['use_page_numbers'] = TRUE;
         $config['num_links'] = 20;
         $config['full_tag_open'] = '<ul>';
@@ -154,16 +147,11 @@ class Admin_products extends CI_Controller {
 
         }//!isset($manufacture_id) && !isset($search_string) && !isset($order)
 
-        if (empty($data['products']))
-        {
-            show_404();
-        }
-         
         //initializate the panination helper 
         $this->pagination->initialize($config);   
 
         //load the view
-        $data['main_content'] = $this::VIEW_FOLDER.'/list';
+        $data['main_content'] = 'admin/products/list';
         $this->load->view('includes/template', $data);  
 
     }//index
@@ -203,9 +191,9 @@ class Admin_products extends CI_Controller {
 
         }
         //fetch manufactures data to populate the select field
-        $data['manufactures'] = $this->products_model->get_manufacturers();
+        $data['manufactures'] = $this->manufacturers_model->get_manufacturers();
         //load the view
-        $data['main_content'] = $this::VIEW_FOLDER.'/add';
+        $data['main_content'] = 'admin/products/add';
         $this->load->view('includes/template', $data);  
     }       
 
@@ -257,7 +245,7 @@ class Admin_products extends CI_Controller {
         //product data 
         $data['product'] = $this->products_model->get_product_by_id($id);
         //fetch manufactures data to populate the select field
-        $data['manufactures'] = $this->products_model->get_manufacturers();
+        $data['manufactures'] = $this->manufacturers_model->get_manufacturers();
         //load the view
         $data['main_content'] = 'admin/products/edit';
         $this->load->view('includes/template', $data);            

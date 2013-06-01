@@ -3,12 +3,6 @@
 class User extends CI_Controller {
 
     /**
-    * Administrator panel's main page 
-    * @constant string
-    */
-	const HOME = 'admin/products';
-	
-    /**
     * Check if the user is logged in, if he's not, 
     * send him to the login page
     * @return void
@@ -16,7 +10,7 @@ class User extends CI_Controller {
 	function index()
 	{
 		if($this->session->userdata('is_logged_in')){
-			redirect($this::HOME);
+			redirect('admin/products');
         }else{
         	$this->load->view('admin/login');	
         }
@@ -51,7 +45,7 @@ class User extends CI_Controller {
 				'is_logged_in' => true
 			);
 			$this->session->set_userdata($data);
-			redirect($this::HOME);
+			redirect('admin/products');
 		}
 		else // incorrect username or password
 		{
@@ -66,8 +60,7 @@ class User extends CI_Controller {
     */
 	function signup()
 	{
-		$data['main_content'] = 'signup_form';
-		$this->load->view('includes/template', $data);
+		$this->load->view('admin/signup_form');	
 	}
 	
 
@@ -86,11 +79,11 @@ class User extends CI_Controller {
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[4]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[4]|max_length[32]');
 		$this->form_validation->set_rules('password2', 'Password Confirmation', 'trim|required|matches[password]');
-		
+		$this->form_validation->set_error_delimiters('<div class="alert alert-error"><a class="close" data-dismiss="alert">×</a><strong>', '</strong></div>');
 		
 		if($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('signup_form');
+			$this->load->view('admin/signup_form');
 		}
 		
 		else
@@ -99,12 +92,11 @@ class User extends CI_Controller {
 			
 			if($query = $this->Users_model->create_member())
 			{
-				$data['main_content'] = 'signup_successful';
-				$this->load->view('includes/template', $data);
+				$this->load->view('admin/signup_successful');			
 			}
 			else
 			{
-				$this->load->view('signup_form');			
+				$this->load->view('admin/signup_form');			
 			}
 		}
 		

@@ -44,9 +44,10 @@
             echo form_open('admin/products', $attributes);
      
               echo form_label('Search:', 'search_string');
-              echo form_input('search_string', $search_string_selected);
+              echo form_input('search_string', $search_string_selected, 'style="width: 170px;
+height: 26px;"');
 
-              echo form_label('Filter by:', 'manufacture_id');
+              echo form_label('Filter by manufacturer:', 'manufacture_id');
               echo form_dropdown('manufacture_id', $options_manufacture, $manufacture_selected, 'class="span2"');
 
               echo form_label('Order by:', 'order');

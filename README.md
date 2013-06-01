@@ -1,7 +1,7 @@
 CodeIgniter-Sample-Project
 ==========================
 
-Sample administrator panel using CodeIgniter with Mysql and Twiter Boostrap.
+Sample administrator panel using CodeIgniter with Mysql and Twitter Bootstrap.
 
 <h2>Requirements</h2>
 <ul>

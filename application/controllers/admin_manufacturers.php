@@ -100,8 +100,10 @@ class Admin_manufacturers extends CI_Controller {
             $data['order'] = $order;
 
             //save session data into the session
-            $this->session->set_userdata($filter_session_data);
-
+            if(isset($filter_session_data)){
+              $this->session->set_userdata($filter_session_data);    
+            }
+            
             //fetch sql data into arrays
             $data['count_products']= $this->manufacturers_model->count_manufacturers($search_string, $order);
             $config['total_rows'] = $data['count_products'];

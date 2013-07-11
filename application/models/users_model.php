@@ -2,7 +2,6 @@
 
 class Users_model extends CI_Model {
 
-
     /**
     * Validate the login's data with the database
     * @param string $user_name
@@ -18,9 +17,7 @@ class Users_model extends CI_Model {
 		if($query->num_rows == 1)
 		{
 			return true;
-		}
-		
-		return true;	
+		}		
 	}
 
     /**

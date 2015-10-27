@@ -109,6 +109,7 @@ class User extends CI_Controller {
 	function logout()
 	{
 		$this->session->sess_destroy();
+		unset($this->session->userdata);
 		redirect('admin');
 	}
 

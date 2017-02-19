@@ -25,7 +25,7 @@ class Admin_manufacturers extends CI_Controller {
     /**
     * Load the main view with all the current model model's data.
     * @return void
-    */
+    *//////
     public function index()
     {
 
@@ -243,6 +243,6 @@ class Admin_manufacturers extends CI_Controller {
         $id = $this->uri->segment(4);
         $this->manufacturers_model->delete_manufacture($id);
         redirect('admin/manufacturers');
-    }//edit
+    }//edit/////
 
 }

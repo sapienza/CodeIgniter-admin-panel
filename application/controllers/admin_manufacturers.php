@@ -245,4 +245,4 @@ class Admin_manufacturers extends CI_Controller {
         redirect('admin/manufacturers');
     }//edit
 
-}
+}///
